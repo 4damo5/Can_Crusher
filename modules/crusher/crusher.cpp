@@ -5,12 +5,11 @@
 
 #include "user_interface.h"
 
-#include "crusher_system.h
-#include "display.h"
+#include "crusher_system.h"
+#include "crusher.h"
+#include "motion_sensor.h"
 
 //=====[Declaration of private defines]========================================
-
-#define DISPLAY_REFRESH_TIME_MS 1000
 
 //=====[Declaration of private data types]=====================================
 

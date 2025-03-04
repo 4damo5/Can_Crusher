@@ -1,7 +1,7 @@
 //=====[#include guards - begin]===============================================
 
-#ifndef _USER_INTERFACE_H_
-#define _USER_INTERFACE_H_
+#ifndef _MOTOR_H_
+#define _MOTOR_H_
 
 //=====[Declaration of public defines]=========================================
 
@@ -9,9 +9,10 @@
 
 //=====[Declarations (prototypes) of public functions]=========================
 
-void userInterfaceInit();
-void userInterfaceUpdate();
+void motorStart();
+void motorStop();
+void motorInit();
 
 //=====[#include guards - end]=================================================
 
-#endif // _USER_INTERFACE_H_
+#endif // _MOTOR_H_
