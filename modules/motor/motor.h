@@ -9,9 +9,9 @@
 
 //=====[Declarations (prototypes) of public functions]=========================
 
+void motorInit();
 void motorStart();
 void motorStop();
-void motorInit();
 
 //=====[#include guards - end]=================================================
 
