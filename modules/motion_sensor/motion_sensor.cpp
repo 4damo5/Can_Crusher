@@ -59,6 +59,7 @@ void triggerPulse() {
 
     if ( triggerUpdateCounter > TRIGGER_UPDATE_TIME ) {
         trig = 0;
+        
         triggerUpdateCounter = 0;
     }
 }

@@ -8,6 +8,7 @@
 #include "crusher_system.h"
 #include "crusher.h"
 #include "motion_sensor.h"
+#include "motor.h"
 
 //=====[Declaration of private defines]========================================
 
@@ -30,7 +31,8 @@ void crusherInit() {
 }
 
 void crusherUpdate() {
-    
+    motorUpdate();
+    motionSensorDetect();
 }
 
 //=====[Implementations of private functions]==================================

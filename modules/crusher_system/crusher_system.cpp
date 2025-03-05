@@ -28,7 +28,8 @@ void crusherSystemInit() {
 }
 
 void crusherSystemUpdate() {
-
+    crusherUpdate();
+    userInterfaceUpdate();
 }
 
 //=====[Implementations of private functions]==================================

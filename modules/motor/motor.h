@@ -9,7 +9,6 @@
 
 typedef enum {
     RUN,
-    DIRECTION_2,
     STOPPED
 } motorDirection_t;
 
