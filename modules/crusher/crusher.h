@@ -11,6 +11,7 @@
 
 void crusherInit();
 void crusherUpdate();
+int crusherRead();
 
 //=====[#include guards - end]=================================================
 

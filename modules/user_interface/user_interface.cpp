@@ -47,7 +47,7 @@ static void userInterfaceUpdate()
 
         accumulatedDisplayTime = 0;
 
-        sprintf(cansCrushed, "%.0f", <replace this with a function from crusher>);
+        sprintf(cansCrushed, "%.0f", crusherRead());
         displayCharPositionWrite ( 14,0 );
         displayStringWrite( cansCrushed );
         

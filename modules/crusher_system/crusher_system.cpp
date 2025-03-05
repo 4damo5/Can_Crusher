@@ -24,7 +24,8 @@
 //=====[Implementations of public functions]===================================
 
 void crusherSystemInit() {
-
+    crusherInit();
+    userInterfaceInit();
 }
 
 void crusherSystemUpdate() {
