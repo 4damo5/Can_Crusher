@@ -23,4 +23,12 @@
 
 //=====[Implementations of public functions]===================================
 
+void crusherSystemInit() {
+
+}
+
+void crusherSystemUpdate() {
+
+}
+
 //=====[Implementations of private functions]==================================

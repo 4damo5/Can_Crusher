@@ -15,7 +15,6 @@
 
 //=====[Declaration and initialization of public global objects]===============
 
-
 //=====[Declaration of external public global variables]=======================
 
 //=====[Declaration and initialization of public global variables]=============
@@ -25,5 +24,13 @@
 //=====[Declarations (prototypes) of private functions]========================
 
 //=====[Implementations of public functions]===================================
+
+void crusherInit() {
+
+}
+
+void crusherUpdate() {
+    
+}
 
 //=====[Implementations of private functions]==================================

@@ -11,6 +11,7 @@
 
 void motionSensorInit();
 void motionSensorDetect();
+bool motionSensorRead();
 
 //=====[#include guards - end]=================================================
 
