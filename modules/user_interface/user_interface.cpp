@@ -47,8 +47,14 @@ static void userInterfaceUpdate()
 
         accumulatedDisplayTime = 0;
 
+        if (eStopState()) {
+            displayCharPositonWrite(0,0);
+            displayStringWrite("EMERGENCY STOP");
+            
+        }
+
         sprintf(cansCrushed, "%.0f", crusherRead());
-        displayCharPositionWrite ( 14,0 );
+        displayCharPositionWrite ( 14,1 );
         displayStringWrite( cansCrushed );
         
 

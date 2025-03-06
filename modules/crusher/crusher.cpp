@@ -33,6 +33,7 @@ typedef enum {
 
 int canCount;
 crusherState_t crusherState;
+bool eStopTriggered = false;
 
 //=====[Declarations (prototypes) of private functions]========================
 
@@ -58,35 +59,53 @@ int crusherRead() {
     return canCount;
 }
 
+bool eStopState() {
+    return eStopTriggered;
+}
+
 //=====[Implementations of private functions]==================================
 
 void crusherStateUpdate() {
+    if (eStopTriggered) {
+        while(true) {}
+    }
+
     switch(crusherState) {
         case NOT_READY:
-        //stop motor 
-        //if can detected
-        //go to ready
+        stopMotor();
+
+        if (motionSensorRead()) {
+            crusherState = READY;
+        } 
         break;
         case READY:
-        //stop motor
-        //if can is not detected 
-        //go to not ready
+        stopMotor();
 
-        //if start button is pressed && can is still detected
-        //go to busy
+        if (!motionSensorRead()) {
+            crusherState = NOT_READY;
+        }
 
+        if (startButton) {
+            crusherState = BUSY;
+        }
         break;
 
         case BUSY:
-        //if lim switch is pressed
-        //go to ready or not ready depending on if can is detected
+        motorStart();
 
-        //if estop is pressed
-        //stop the the motor and go into an infinite loop interrupt
+        if (limSwitch) {
+            if (motionSensorRead()) {
+                crusherState = READY;
+            }
+            else {
+                crusherState = NOT_READY;
+            }
+        }
 
-        //else 
-        //keep turning motor
-
+        if (eStop) {
+            stopMotor();
+            eStopTriggered = true;
+        }
         break;
 
         default:

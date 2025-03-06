@@ -12,6 +12,7 @@
 void crusherInit();
 void crusherUpdate();
 int crusherRead();
+bool eStopState();
 
 //=====[#include guards - end]=================================================
 
