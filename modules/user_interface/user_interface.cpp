@@ -6,6 +6,7 @@
 #include "user_interface.h"
 #include "display.h"
 #include "crusher.h"
+#include "crusher_system.h"
 
 //=====[Declaration of private defines]========================================
 
@@ -23,8 +24,6 @@
 
 //=====[Declarations (prototypes) of private functions]========================
 
-
-
 //=====[Implementations of public functions]===================================
 
 //=====[Implementations of private functions]==================================
@@ -40,7 +39,7 @@ static void userInterfaceInit()
 static void userInterfaceUpdate()
 {
     static int accumulatedDisplayTime = 0;
-    char temperatureString[3] = "";
+    char cansCrushed[3] = "";
     
     if( accumulatedDisplayTime >=
         DISPLAY_REFRESH_TIME_MS ) {
@@ -48,12 +47,12 @@ static void userInterfaceUpdate()
         accumulatedDisplayTime = 0;
 
         if (eStopState()) {
-            displayCharPositonWrite(0,0);
+            displayCharPositionWrite(0,0);
             displayStringWrite("EMERGENCY STOP");
             
         }
 
-        sprintf(cansCrushed, "%.0f", crusherRead());
+        sprintf(cansCrushed, "%d", crusherRead());
         displayCharPositionWrite ( 14,1 );
         displayStringWrite( cansCrushed );
         

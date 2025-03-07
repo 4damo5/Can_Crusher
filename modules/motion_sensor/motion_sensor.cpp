@@ -29,7 +29,10 @@ int timerStop;
 
 //=====[Declarations (prototypes) of private functions]========================
 
-void triggerPulse();
+static void triggerPulse();
+static void echoRise();
+static void echoFall();
+static void tickerCallback();
 
 //=====[Implementations of public functions]===================================
 
@@ -51,7 +54,7 @@ bool motionSensorRead() {
 
 //=====[Implementations of private functions]==================================
 
-void triggerPulse() {
+static void triggerPulse() {
     static int triggerUpdateCounter = 0;
     triggerUpdateCounter++;
 
@@ -64,11 +67,11 @@ void triggerPulse() {
     }
 }
 
-void echoRise() {
+static void echoRise() {
     pulseLength = 0;
 }
 
-void echoFall() {
+static void echoFall() {
     timerStop = pulseLength;
 
     if (timerStop < 20) { 

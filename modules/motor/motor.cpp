@@ -4,10 +4,11 @@
 #include "arm_book_lib.h"
 
 #include "motor.h"
+#include "crusher_system.h"
 
 //=====[Declaration of private defines]========================================
 
-#define MOTOR_UPDATE_TIME 9
+#define MOTOR_UPDATE_TIME 900
 
 //=====[Declaration of private data types]=====================================
 
@@ -52,7 +53,7 @@ void motorUpdate()
 {
     static int motorUpdateCounter = 0;
     
-    motorUpdateCounter++;
+    motorUpdateCounter += SYSTEM_TIME_INCREMENT_MS;
     
     if ( motorUpdateCounter > MOTOR_UPDATE_TIME ) {
         

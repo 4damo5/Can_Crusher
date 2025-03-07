@@ -22,8 +22,9 @@ typedef enum {
 
 //=====[Declaration and initialization of public global objects]===============
 
-// define start / estop here
-//define lim switch here
+DigitalIn startButton();
+DigitalIn eStop();
+DigitalIn limSwitch();
 
 //=====[Declaration of external public global variables]=======================
 
@@ -72,14 +73,14 @@ void crusherStateUpdate() {
 
     switch(crusherState) {
         case NOT_READY:
-        stopMotor();
+        motorStop();
 
         if (motionSensorRead()) {
             crusherState = READY;
         } 
         break;
         case READY:
-        stopMotor();
+        motorStop();
 
         if (!motionSensorRead()) {
             crusherState = NOT_READY;
@@ -103,7 +104,7 @@ void crusherStateUpdate() {
         }
 
         if (eStop) {
-            stopMotor();
+            motorStop();
             eStopTriggered = true;
         }
         break;
