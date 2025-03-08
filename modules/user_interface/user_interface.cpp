@@ -31,7 +31,10 @@
 static void userInterfaceInit()
 {
     displayInit();
-    
+
+    displayCharPositionWrite ( 0,0 );
+    displayStringWrite( "CRUSHER:" );
+
     displayCharPositionWrite ( 0,1 );
     displayStringWrite( "CANS CRUSHED:" );
 }
@@ -46,9 +49,29 @@ static void userInterfaceUpdate()
 
         accumulatedDisplayTime = 0;
 
+        switch(crusherStateRead()) {
+            case (NOT_READY):
+            displayCharPositionWrite(9,0);
+            displayStringWrite("NOT READY");
+            break;
+            
+            case (READY):
+            displayCharPositionWrite(9,0);
+            displayStringWrite("READY      ");
+            break;
+
+            case (BUSY):
+            displayCharPositionWrite(9,0);
+            displayStringWrite("BUSY       ");
+            break;
+
+            default:
+            break;
+        }
+
         if (eStopState()) {
             displayCharPositionWrite(0,0);
-            displayStringWrite("EMERGENCY STOP");
+            displayStringWrite("EMERGENCY STOP   ");
             
         }
 

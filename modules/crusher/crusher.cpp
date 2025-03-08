@@ -14,12 +14,6 @@
 
 //=====[Declaration of private data types]=====================================
 
-typedef enum {
-    NOT_READY,
-    READY,
-    BUSY
-} crusherState_t;
-
 //=====[Declaration and initialization of public global objects]===============
 
 DigitalIn startButton();
@@ -58,6 +52,10 @@ void crusherUpdate() {
 
 int crusherRead() {
     return canCount;
+}
+
+crusherState_t crusherStateRead() {
+    return crusherState;
 }
 
 bool eStopState() {

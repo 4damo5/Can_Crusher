@@ -7,12 +7,19 @@
 
 //=====[Declaration of public data types]======================================
 
+typedef enum {
+    NOT_READY,
+    READY,
+    BUSY
+} crusherState_t;
+
 //=====[Declarations (prototypes) of public functions]=========================
 
 void crusherInit();
 void crusherUpdate();
 int crusherRead();
 bool eStopState();
+crusherState_t crusherStateRead();
 
 //=====[#include guards - end]=================================================
 
