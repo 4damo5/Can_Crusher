@@ -30,10 +30,12 @@ void crusherSystemInit() {
     userInterfaceInit();
 }
 
-static void crusherSystemUpdate() {
+void crusherSystemUpdate() {
     static int crusherUpdateCounter = 0;
 
     if(crusherUpdateCounter == CRUSHER_DELAY_TIME) {
+    crusherUpdateCounter = 0;
+    
     crusherUpdate();
     userInterfaceUpdate();
     }

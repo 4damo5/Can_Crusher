@@ -21,8 +21,7 @@ DigitalInOut motorM2Pin(PE_3);
 
 //=====[Declaration and initialization of public global variables]=============
 
-motorDirection_t motorDirection;
-motorDirection_t motorState;
+bool motorRunning;
 
 //=====[Declaration and initialization of private global variables]============
 
@@ -37,16 +36,15 @@ void motorInit() {
     motorM1Pin.input();
     motorM2Pin.input();
 
-    motorDirection = STOPPED;
-    motorState = STOPPED;
+    motorRunning = false;
 }
 
 void motorStart() {
-    motorState = RUN;
+    motorRunning = true;
 }
 
 void motorStop() {
-    motorState = STOPPED;
+    motorRunning = false;
 }
 
 void motorUpdate()
@@ -59,25 +57,18 @@ void motorUpdate()
         
         motorUpdateCounter = 0;
         
-        switch ( motorState ) {
-            case RUN:
-                if (motorDirection == STOPPED ) {
+        if ( motorRunning ) {
                     motorM1Pin.input();
                     motorM2Pin.input();
-                    motorState = STOPPED;
-                }
-            break;
-            case STOPPED:
-            default:
-                if ( motorDirection == RUN ) {
+                    motorRunning = false;
+        }
+         else {
                     motorM2Pin.input();
                     motorM1Pin.output();
                     motorM1Pin = LOW;
-                    motorState = RUN;
-                }
-            break;
-        }
-    }        
+                    motorRunning = true;
+                           }        
+}
 }
 
 //=====[Implementations of private functions]==================================

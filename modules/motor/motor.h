@@ -7,11 +7,6 @@
 
 //=====[Declaration of public data types]======================================
 
-typedef enum {
-    RUN,
-    STOPPED
-} motorDirection_t;
-
 //=====[Declarations (prototypes) of public functions]=========================
 
 void motorInit();

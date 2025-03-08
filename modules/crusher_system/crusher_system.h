@@ -12,7 +12,7 @@
 //=====[Declarations (prototypes) of public functions]=========================
 
 void crusherSystemInit();
-static void crusherSystemUpdate();
+void crusherSystemUpdate();
 
 //=====[#include guards - end]=================================================
 

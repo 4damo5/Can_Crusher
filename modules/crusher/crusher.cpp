@@ -16,9 +16,9 @@
 
 //=====[Declaration and initialization of public global objects]===============
 
-DigitalIn startButton();
+DigitalIn startButton(D12);
 DigitalIn eStop();
-DigitalIn limSwitch();
+DigitalIn limSwitch(D13);
 
 //=====[Declaration of external public global variables]=======================
 

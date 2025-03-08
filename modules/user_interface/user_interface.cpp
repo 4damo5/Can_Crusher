@@ -28,7 +28,7 @@
 
 //=====[Implementations of private functions]==================================
 
-static void userInterfaceInit()
+void userInterfaceInit()
 {
     displayInit();
 
@@ -39,14 +39,12 @@ static void userInterfaceInit()
     displayStringWrite( "CANS CRUSHED:" );
 }
 
-static void userInterfaceUpdate()
+void userInterfaceUpdate()
 {
     static int accumulatedDisplayTime = 0;
     char cansCrushed[3] = "";
     
-    if( accumulatedDisplayTime >=
-        DISPLAY_REFRESH_TIME_MS ) {
-
+    if( accumulatedDisplayTime >= DISPLAY_REFRESH_TIME_MS ) {
         accumulatedDisplayTime = 0;
 
         switch(crusherStateRead()) {

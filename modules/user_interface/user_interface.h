@@ -9,8 +9,8 @@
 
 //=====[Declarations (prototypes) of public functions]=========================
 
-static void userInterfaceInit();
-static void userInterfaceUpdate();
+void userInterfaceInit();
+void userInterfaceUpdate();
 
 //=====[#include guards - end]=================================================
 
