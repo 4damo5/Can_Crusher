@@ -1,12 +1,12 @@
 //=====[Libraries]=============================================================
 
-#include "mbed.h"
 #include "arm_book_lib.h"
+#include "mbed.h"
 
-#include "user_interface.h"
-#include "display.h"
 #include "crusher.h"
 #include "crusher_system.h"
+#include "display.h"
+#include "user_interface.h"
 
 //=====[Declaration of private defines]========================================
 
@@ -28,58 +28,53 @@
 
 //=====[Implementations of private functions]==================================
 
-void userInterfaceInit()
-{
-    displayInit();
+void userInterfaceInit() {
+  displayInit();
 
-    displayCharPositionWrite ( 0,0 );
-    displayStringWrite( "CRUSHER:" );
+  displayCharPositionWrite(0, 0);
+  displayStringWrite("CRUSHER:");
 
-    displayCharPositionWrite ( 0,1 );
-    displayStringWrite( "CANS CRUSHED:" );
+  displayCharPositionWrite(0, 1);
+  displayStringWrite("CANS CRUSHED:");
 }
 
-void userInterfaceUpdate()
-{
-    static int accumulatedDisplayTime = 0;
-    char cansCrushed[3] = "";
-    
-    if( accumulatedDisplayTime >= DISPLAY_REFRESH_TIME_MS ) {
-        accumulatedDisplayTime = 0;
+void userInterfaceUpdate() {
+  static int accumulatedDisplayTime = 0;
+  char cansCrushed[3] = "";
 
-        switch(crusherStateRead()) {
-            case (NOT_READY):
-            displayCharPositionWrite(9,0);
-            displayStringWrite("NOT READY");
-            break;
-            
-            case (READY):
-            displayCharPositionWrite(9,0);
-            displayStringWrite("READY      ");
-            break;
+  if (accumulatedDisplayTime >= DISPLAY_REFRESH_TIME_MS) {
+    accumulatedDisplayTime = 0;
 
-            case (BUSY):
-            displayCharPositionWrite(9,0);
-            displayStringWrite("BUSY       ");
-            break;
+    switch (crusherStateRead()) {
+    case (NOT_READY):
+      displayCharPositionWrite(9, 0);
+      displayStringWrite("NOT READY");
+      break;
 
-            default:
-            break;
-        }
+    case (READY):
+      displayCharPositionWrite(9, 0);
+      displayStringWrite("READY      ");
+      break;
 
-        if (eStopState()) {
-            displayCharPositionWrite(0,0);
-            displayStringWrite("EMERGENCY STOP   ");
-            
-        }
+    case (BUSY):
+      displayCharPositionWrite(9, 0);
+      displayStringWrite("BUSY       ");
+      break;
 
-        sprintf(cansCrushed, "%d", crusherRead());
-        displayCharPositionWrite ( 14,1 );
-        displayStringWrite( cansCrushed );
-        
+    default:
+      break;
+    }
 
-    } else {
-        accumulatedDisplayTime =
-            accumulatedDisplayTime + SYSTEM_TIME_INCREMENT_MS;        
-    } 
+    if (eStopState()) {
+      displayCharPositionWrite(0, 0);
+      displayStringWrite("EMERGENCY STOP   ");
+    }
+
+    sprintf(cansCrushed, "%d", crusherRead());
+    displayCharPositionWrite(14, 1);
+    displayStringWrite(cansCrushed);
+
+  } else {
+    accumulatedDisplayTime = accumulatedDisplayTime + SYSTEM_TIME_INCREMENT_MS;
+  }
 }

@@ -1,11 +1,11 @@
 //=====[Libraries]=============================================================
 
-#include "mbed.h"
 #include "arm_book_lib.h"
+#include "mbed.h"
 
-#include "user_interface.h"
 #include "crusher.h"
 #include "crusher_system.h"
+#include "user_interface.h"
 
 //=====[Declaration of private defines]========================================
 
@@ -26,23 +26,21 @@
 //=====[Implementations of public functions]===================================
 
 void crusherSystemInit() {
-    crusherInit();
-    userInterfaceInit();
+  crusherInit();
+  userInterfaceInit();
 }
 
 void crusherSystemUpdate() {
-    static int crusherUpdateCounter = 0;
+  static int crusherUpdateCounter = 0;
 
-    if(crusherUpdateCounter == CRUSHER_DELAY_TIME) {
+  if (crusherUpdateCounter == CRUSHER_DELAY_TIME) {
     crusherUpdateCounter = 0;
-    
+
     crusherUpdate();
     userInterfaceUpdate();
-    }
-    else {
-        crusherUpdateCounter += SYSTEM_TIME_INCREMENT_MS;
-    }
-
+  } else {
+    crusherUpdateCounter += SYSTEM_TIME_INCREMENT_MS;
+  }
 }
 
 //=====[Implementations of private functions]==================================

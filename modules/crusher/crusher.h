@@ -7,11 +7,7 @@
 
 //=====[Declaration of public data types]======================================
 
-typedef enum {
-    NOT_READY,
-    READY,
-    BUSY
-} crusherState_t;
+typedef enum { NOT_READY, READY, BUSY } crusherState_t;
 
 //=====[Declarations (prototypes) of public functions]=========================
 
