@@ -42,18 +42,23 @@ void userInterfaceUpdate() {
   static int accumulatedDisplayTime = 0;
   char cansCrushed[3] = "";
 
+  if (eStopState()) {
+      displayCharPositionWrite(0, 0);
+      displayStringWrite("EMERGENCY STOP   ");
+    }
+
   if (accumulatedDisplayTime >= DISPLAY_REFRESH_TIME_MS) {
     accumulatedDisplayTime = 0;
 
     switch (crusherStateRead()) {
     case (NOT_READY):
       displayCharPositionWrite(9, 0);
-      displayStringWrite("NOT READY");
+      displayStringWrite("NOT RDY");
       break;
 
     case (READY):
       displayCharPositionWrite(9, 0);
-      displayStringWrite("READY      ");
+      displayStringWrite("READY  ");
       break;
 
     case (BUSY):
@@ -65,16 +70,11 @@ void userInterfaceUpdate() {
       break;
     }
 
-    if (eStopState()) {
-      displayCharPositionWrite(0, 0);
-      displayStringWrite("EMERGENCY STOP   ");
-    }
-
     sprintf(cansCrushed, "%d", crusherRead());
     displayCharPositionWrite(14, 1);
     displayStringWrite(cansCrushed);
 
   } else {
-    accumulatedDisplayTime = accumulatedDisplayTime + SYSTEM_TIME_INCREMENT_MS;
+    accumulatedDisplayTime += SYSTEM_TIME_INCREMENT_MS;
   }
 }

@@ -8,14 +8,13 @@
 
 //=====[Declaration of private defines]========================================
 
-#define MOTOR_UPDATE_TIME 900
+#define MOTOR_UPDATE_TIME 500
 
 //=====[Declaration of private data types]=====================================
 
 //=====[Declaration and initialization of public global objects]===============
 
-DigitalInOut motorM1Pin(PF_2);
-DigitalInOut motorM2Pin(PE_3);
+DigitalOut motorRelayPin(PF_2);
 
 //=====[Declaration of external public global variables]=======================
 
@@ -30,12 +29,7 @@ bool motorRunning;
 //=====[Implementations of public functions]===================================
 
 void motorInit() {
-  motorM1Pin.mode(OpenDrain);
-  motorM2Pin.mode(OpenDrain);
-
-  motorM1Pin.input();
-  motorM2Pin.input();
-
+  motorRelayPin = ON;
   motorRunning = false;
 }
 
@@ -48,19 +42,14 @@ void motorUpdate() {
 
   motorUpdateCounter += SYSTEM_TIME_INCREMENT_MS;
 
-  if (motorUpdateCounter > MOTOR_UPDATE_TIME) {
+  if (motorUpdateCounter >= MOTOR_UPDATE_TIME) {
 
     motorUpdateCounter = 0;
 
     if (motorRunning) {
-      motorM1Pin.input();
-      motorM2Pin.input();
-      motorRunning = false;
+      motorRelayPin = OFF;
     } else {
-      motorM2Pin.input();
-      motorM1Pin.output();
-      motorM1Pin = LOW;
-      motorRunning = true;
+      motorRelayPin = ON;
     }
   }
 }

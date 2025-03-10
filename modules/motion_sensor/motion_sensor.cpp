@@ -4,17 +4,18 @@
 #include "mbed.h"
 
 #include "motion_sensor.h"
+#include "crusher_system.h"
 
 //=====[Declaration of private defines]========================================
 
 //=====[Declaration of private data types]=====================================
 
-#define TRIGGER_UPDATE_TIME 10
+#define TRIGGER_UPDATE_TIME 200
 
 //=====[Declaration and initialization of public global objects]===============
 
-DigitalOut trig(D7);
-InterruptIn echo(D6);
+DigitalOut trig(D13);
+InterruptIn echo(D12);
 Ticker timer;
 
 //=====[Declaration of external public global variables]=======================
@@ -39,7 +40,7 @@ static void tickerCallback();
 void motionSensorInit() {
   echo.rise(&echoRise);
   echo.fall(&echoFall);
-  timer.attach(&tickerCallback, .001);
+  timer.attach(&tickerCallback, 1ms);
 
   motionDetected = false;
 }
@@ -52,11 +53,11 @@ bool motionSensorRead() { return motionDetected; }
 
 static void triggerPulse() {
   static int triggerUpdateCounter = 0;
-  triggerUpdateCounter++;
+  triggerUpdateCounter+= SYSTEM_TIME_INCREMENT_MS;
 
   trig = 1;
 
-  if (triggerUpdateCounter > TRIGGER_UPDATE_TIME) {
+  if (triggerUpdateCounter >= TRIGGER_UPDATE_TIME) {
     trig = 0;
 
     triggerUpdateCounter = 0;

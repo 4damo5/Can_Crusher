@@ -9,8 +9,6 @@
 
 //=====[Declaration of private defines]========================================
 
-#define CRUSHER_DELAY_TIME 200
-
 //=====[Declaration of private data types]=====================================
 
 //=====[Declaration and initialization of public global objects]===============
@@ -31,16 +29,9 @@ void crusherSystemInit() {
 }
 
 void crusherSystemUpdate() {
-  static int crusherUpdateCounter = 0;
-
-  if (crusherUpdateCounter == CRUSHER_DELAY_TIME) {
-    crusherUpdateCounter = 0;
-
-    crusherUpdate();
     userInterfaceUpdate();
-  } else {
-    crusherUpdateCounter += SYSTEM_TIME_INCREMENT_MS;
-  }
+    crusherUpdate();
+  delay(SYSTEM_TIME_INCREMENT_MS);
 }
 
 //=====[Implementations of private functions]==================================
