@@ -31,6 +31,7 @@ void crusherSystemInit() {
 void crusherSystemUpdate() {
     userInterfaceUpdate();
     crusherUpdate();
+    
   delay(SYSTEM_TIME_INCREMENT_MS);
 }
 

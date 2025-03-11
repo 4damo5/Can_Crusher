@@ -5,10 +5,11 @@
 
 #include "crusher_system.h"
 #include "motor.h"
+#include "crusher.h"
 
 //=====[Declaration of private defines]========================================
 
-#define MOTOR_UPDATE_TIME 500
+#define MOTOR_UPDATE_TIME 200
 
 //=====[Declaration of private data types]=====================================
 
@@ -29,7 +30,7 @@ bool motorRunning;
 //=====[Implementations of public functions]===================================
 
 void motorInit() {
-  motorRelayPin = ON;
+  motorRelayPin = OFF;
   motorRunning = false;
 }
 
@@ -38,6 +39,8 @@ void motorStart() { motorRunning = true; }
 void motorStop() { motorRunning = false; }
 
 void motorUpdate() {
+
+    
   static int motorUpdateCounter = 0;
 
   motorUpdateCounter += SYSTEM_TIME_INCREMENT_MS;
@@ -47,11 +50,15 @@ void motorUpdate() {
     motorUpdateCounter = 0;
 
     if (motorRunning) {
-      motorRelayPin = OFF;
-    } else {
       motorRelayPin = ON;
+    } else {
+      motorRelayPin = OFF;
     }
   }
+
+  if (eStopState()) {
+        motorRelayPin = OFF;
+    }
 }
 
 //=====[Implementations of private functions]==================================

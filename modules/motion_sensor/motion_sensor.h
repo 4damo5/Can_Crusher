@@ -10,8 +10,8 @@
 //=====[Declarations (prototypes) of public functions]=========================
 
 void motionSensorInit();
-void motionSensorDetect();
 bool motionSensorRead();
+void motionSensorUpdate();
 
 //=====[#include guards - end]=================================================
 

@@ -16,9 +16,9 @@
 
 //=====[Declaration and initialization of public global objects]===============
 
-DigitalIn startButton(D10);
-DigitalIn eStop(D14);
-DigitalIn limSwitch(D11);
+DigitalIn startButton(D14);
+DigitalIn eStop(D13);
+DigitalIn limSwitch(D12);
 
 //=====[Declaration of external public global variables]=======================
 
@@ -37,20 +37,23 @@ void crusherStateUpdate();
 //=====[Implementations of public functions]===================================
 
 void crusherInit() {
-  motorInit();
-  motionSensorInit();
-  startButton.mode(PullDown);
+    startButton.mode(PullDown);
   eStop.mode(PullDown);
   limSwitch.mode(PullDown);
+
+  motorInit();
+  motionSensorInit();
+  
 
   crusherState = NOT_READY;
   canCount = 0;
 }
 
 void crusherUpdate() {
-  motorUpdate();
-  motionSensorDetect();
+  
+  motionSensorUpdate();
   crusherStateUpdate();
+  motorUpdate();
 }
 
 int crusherRead() { return canCount; }
@@ -62,16 +65,6 @@ bool eStopState() { return eStopTriggered; }
 //=====[Implementations of private functions]==================================
 
 void crusherStateUpdate() {
-
-    if (eStop) {
-      motorStop();
-      eStopTriggered = true;
-    }
-  if (eStopTriggered) {
-    while (true) {
-    }
-  }
-
   switch (crusherState) {
   case NOT_READY:
     motorStop();
@@ -96,17 +89,20 @@ void crusherStateUpdate() {
     motorStart();
 
     if (limSwitch) {
+        canCount++;
       if (motionSensorRead()) {
         crusherState = READY;
       } else {
         crusherState = NOT_READY;
       }
     }
-
-    
     break;
 
   default:
     break;
   }
+  if (eStop) {
+      motorStop();
+      eStopTriggered = true;
+    }
 }

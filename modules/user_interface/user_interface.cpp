@@ -6,6 +6,7 @@
 #include "crusher.h"
 #include "crusher_system.h"
 #include "display.h"
+#include "motion_sensor.h"
 #include "user_interface.h"
 
 //=====[Declaration of private defines]========================================
@@ -42,11 +43,6 @@ void userInterfaceUpdate() {
   static int accumulatedDisplayTime = 0;
   char cansCrushed[3] = "";
 
-  if (eStopState()) {
-      displayCharPositionWrite(0, 0);
-      displayStringWrite("EMERGENCY STOP   ");
-    }
-
   if (accumulatedDisplayTime >= DISPLAY_REFRESH_TIME_MS) {
     accumulatedDisplayTime = 0;
 
@@ -69,12 +65,17 @@ void userInterfaceUpdate() {
     default:
       break;
     }
-
     sprintf(cansCrushed, "%d", crusherRead());
     displayCharPositionWrite(14, 1);
     displayStringWrite(cansCrushed);
 
   } else {
     accumulatedDisplayTime += SYSTEM_TIME_INCREMENT_MS;
+  }
+
+  if (eStopState()) {
+    displayCharPositionWrite(0, 0);
+    displayStringWrite("EMERGENCY STOP      ");
+    exit(0);
   }
 }
