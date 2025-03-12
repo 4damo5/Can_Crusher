@@ -27,8 +27,8 @@ graph TD;
 
 | Specification  | Test Result  | 
 |-----------|-----------|
-| Can detected by sensor | pass |
-| Motor activates, can crushed when start button pressed with can present | pass |
+| LCD updates on can detection | pass |
+| Motor activates when start button pressed with can present | pass |
 | System remains idle when start button pressed without can | pass |
 | Motor stops and count is updated on LCD when motor reaches limit switch | pass |
-| Motor stops and LCD is updated when Emergency Stop pressed | pass |
+| Motor stops, LCD, and system stops is updated when Emergency Stop pressed | pass |
