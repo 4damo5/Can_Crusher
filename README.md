@@ -1,7 +1,7 @@
 # Can Crusher  
 Adam Otsuka & Leo Pratt-Thomas
 
-We built an automated Can Crusher designed to reduce the size of aluminum cans to make Union more sustainable. 
+We built an automated Can Crusher designed to reduce the size of aluminum cans recycling bins making campus more sustainable. 
 
 The device uses mechanical and electronic components to crush cans while ensuring safety and ease of use. The system detects when a can is present in the machine, starts via push button when ready, and updates on its status (ready state and how many cans crushed) on the LCD screen. It has an emergency stop as well in case anything goes wrong.
 
