@@ -17,7 +17,6 @@ graph TD;
     crusher_system --> user_interface;
     user_interface --> display;
     crusher_system --> crusher;
-    crusher_system --> motion_sensor;
     motion_sensor --> crusher;
     crusher --> motor;
     motor --> crusher;
