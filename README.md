@@ -11,8 +11,6 @@ The system includes a 24V wormgear motor to provide the crushing force, sensors 
 
 ## Module Diagram:  
 
-![Module DIAGRAM](https://github.com/4damo5/Can_Crusher/blob/master/Block_Diagram.png)
-
 ```mermaid
 graph TD;
     main.cpp --> crusher_system;
