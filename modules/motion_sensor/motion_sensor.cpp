@@ -10,7 +10,7 @@
 
 //=====[Declaration of private data types]=====================================
 
-#define TRIGGER_UPDATE_TIME 20
+#define DETECTION_VALUE .8
 
 //=====[Declaration and initialization of public global objects]===============
 
@@ -34,7 +34,7 @@ void motionSensorInit() {
 
 void motionSensorUpdate() { 
     float lightReading = lightReader.read();
-    if (lightReading < .8) {
+    if (lightReading < DETECTION_VALUE) {
         motionDetected = false;
     }
     else {
