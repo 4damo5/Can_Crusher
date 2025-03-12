@@ -4,7 +4,6 @@
 #include "mbed.h"
 
 #include "motion_sensor.h"
-#include "crusher_system.h"
 
 //=====[Declaration of private defines]========================================
 
