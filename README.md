@@ -23,8 +23,10 @@ Module Diagram:
 | motor stops and count is updated on LCD when motor reaches limit switch | pass |
 | Motor stops and LCD is updated when Emergency Stop pressed | pass |
 
-| Column 1  | Column 2  | Column 3  |
-|-----------|-----------|-----------|
-| Row 1, C1 | Row 1, C2 | Row 1, C3 |
-| Row 2, C1 | Row 2, C2 | Row 2, C3 |
-| Row 3, C1 | Row 3, C2 | Row 3, C3 |
+| Specification  | Test Result  | 
+|-----------|-----------|
+| Can detected by sensor | pass |
+| Motor activates, can crushed when start button pressed with can present | pass |
+| System remains idle when start button pressed without can | pass |
+| motor stops and count is updated on LCD when motor reaches limit switch | pass |
+| Motor stops and LCD is updated when Emergency Stop pressed | pass |
