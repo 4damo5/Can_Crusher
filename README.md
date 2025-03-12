@@ -9,7 +9,7 @@ To initiate crushing . Once the crushing process is complete, the user can remov
 
 The system includes a 24V wormgear motor to provide the crushing force, sensors to detect can placement, and a display to provide real-time feedback on the machine.
 
-Module Diagram:  
+## Module Diagram:  
 
 ![Module DIAGRAM](https://github.com/4damo5/Can_Crusher/blob/master/Block_Diagram.png)
 
