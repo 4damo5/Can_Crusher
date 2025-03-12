@@ -38,9 +38,7 @@ void motorStart() { motorRunning = true; }
 
 void motorStop() { motorRunning = false; }
 
-void motorUpdate() {
-
-    
+void motorUpdate() {    
   static int motorUpdateCounter = 0;
 
   motorUpdateCounter += SYSTEM_TIME_INCREMENT_MS;
