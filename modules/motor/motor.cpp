@@ -3,7 +3,6 @@
 #include "arm_book_lib.h"
 #include "mbed.h"
 
-#include "crusher_system.h"
 #include "motor.h"
 #include "crusher.h"
 
