@@ -6,7 +6,6 @@
 #include "user_interface.h"
 
 #include "crusher.h"
-#include "crusher_system.h"
 #include "motion_sensor.h"
 #include "motor.h"
 
