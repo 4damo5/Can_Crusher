@@ -19,7 +19,7 @@ graph TD;
     crusher_system --> crusher;
     motion_sensor --> crusher;
     crusher --> motor;
-    motor -> crusher;
+    motor --> crusher;
 ```
 
 ## Project Behavior Table
