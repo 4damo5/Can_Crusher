@@ -7,7 +7,7 @@ The device uses mechanical and electronic components to crush cans while ensurin
 
 To initiate crushing . Once the crushing process is complete, the user can remove the compressed can from the designated output area.  
 
-The system includes a 24V wormgear motor to provide the crushing force, sensors to detect can placement, and a display to provide real-time feedback on the machine.
+The system includes a 24V wormgear motor to provide the crushing force, sensors to detect can placement, and an LCD display to provide real-time feedback on the machine.
 
 ## Module Diagram:  
 
