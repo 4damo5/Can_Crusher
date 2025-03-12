@@ -3,7 +3,7 @@ Adam Otsuka & Leo Pratt-Thomas
 
 We built an automated Can Crusher designed to reduce the size of aluminum cans recycling bins making campus more sustainable. 
 
-The device uses mechanical and electronic components to crush cans while ensuring safety and ease of use. The system detects when a can is present in the machine, starts via push button when ready, and updates on its status (ready state and how many cans crushed) on the LCD screen. It has an emergency stop as well in case anything goes wrong.
+The device combines mechanical and electronic components to crush cans while prioritizing safety and ease of use. The system detects when a can is present in the machine, starts via push button when ready, and updates on its status (ready state and how many cans crushed) on the LCD screen. It has an emergency stop as well in case anything goes wrong.
 
 To initiate crushing . Once the crushing process is complete, the user can remove the compressed can from the designated output area.  
 
